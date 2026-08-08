@@ -99,7 +99,8 @@ downloadBtn.addEventListener("click", () => {
   }
   downloadAsciiImage(pre.textContent, 14);
 });
-function downloadAsciiImage(asciiText, fontSize = 16, widthMultiplier = 1.25) {
+
+function downloadAsciiImage(asciiText, fontSize = 16, widthMultiplier = 1.5) {
   const lines = asciiText.split("\n");
   if (lines.length === 0 || !asciiText.trim()) return;
 
