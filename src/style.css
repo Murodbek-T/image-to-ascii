@@ -1,0 +1,153 @@
+/* --- Base Reset & Dark Palette --- */
+:root {
+  --bg-dark: #090a0f;
+  --panel-bg: #12131a;
+  --border-color: #232533;
+  --border-hover: #3f4259;
+  --text-main: #f4f4f5;
+  --text-muted: #8b8e9e;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+/* --- Main Layout Container --- */
+#app {
+  width: 100%;
+  max-width: 900px;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+}
+
+/* --- Control Bar / Upload Controls --- */
+.controls-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Hide default file input */
+input[type="file"] {
+  display: none;
+}
+
+/* Custom File Upload Label */
+.file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-label:hover {
+  border-color: var(--border-hover);
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Primary Action Button */
+button {
+  padding: 0.625rem 1.25rem;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Hide internal processing canvas from DOM layout */
+canvas {
+  display: none;
+}
+
+/* --- ASCII Output Display --- */
+pre {
+  background-color: #050508;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #e4e4e7;
+  font-family: var(--font-mono);
+  font-size: 7px; /* Adjust font size according to targetWidth */
+  line-height: 0.55em; /* Critical for tight vertical character stacking */
+  letter-spacing: 0;
+  white-space: pre;
+  overflow-x: auto; /* Scrollbar if output exceeds container */
+  max-height: 70vh;
+  text-align: center;
+}
+
+/* Custom Scrollbar for Pre Tag */
+pre::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
